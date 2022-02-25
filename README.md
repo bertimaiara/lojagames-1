@@ -1,4 +1,4 @@
-<h1>Exercício 01 - Loja de Games</h1>
+<h1>Projeto Loja de Games</h1>
 
 ## Diagrama de Classes
 
@@ -45,5 +45,5 @@ Categoria --> Produto
 - [x] Criar a Camada Repository
 - [x] Criar a Camada Controller
 - [x] Criar o Relacionamento entre as 2 classes
-- [x] Fazer os testes no Isomnia
+- [x] Fazer os testes no Insomnia
 
