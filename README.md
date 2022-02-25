@@ -1,6 +1,39 @@
 <h1>Exercício 01 - Loja de Games</h1>
 
+## Diagrama de Classes
 
+```mermaid
+classDiagram
+class Categoria {
+  - id : Long
+  - tipo : String
+  - produto : List ~Produto~
+  + getAll()
+  + getById(Long id)
+  + getByTipo(String tipo)
+  + post(Categoria categoria)
+  + put(Categoria categoria)
+  + delete(Long id)
+}
+class Produto {
+  - id : Long
+  - nome : String
+  - descricao: String
+  - console: String
+  - quantidade: int
+  - dataLancamento: LocalDate
+  - preco: BigDecimal
+  - foto: String
+  - categoria: Categoria
+  + getAll()
+  + getById(Long id)
+  + getByNome(String nome)
+  + post(Produto produto)
+  + put(Produto produto)
+  + delete(Long id)
+}
+Categoria --> Produto
+```
 
 <h2>Etapas:</h2>
 
