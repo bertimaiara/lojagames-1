@@ -38,7 +38,7 @@ public class CategoriaController {
 	public ResponseEntity<Categoria> getById(@PathVariable Long id){
 		
 		return categoriaRepository.findById(id)
-			.map(resp -> ResponseEntity.ok(resp))
+			.map(resposta -> ResponseEntity.ok(resposta))
 			.orElse(ResponseEntity.notFound().build());
 	}
 	
@@ -58,9 +58,7 @@ public class CategoriaController {
 	public ResponseEntity<Categoria> putCategoria(@Valid @RequestBody Categoria categoria) {
 					
 		return categoriaRepository.findById(categoria.getId())
-				.map(resposta -> {
-					return ResponseEntity.ok().body(categoriaRepository.save(categoria));
-				})
+				.map(resposta -> ResponseEntity.ok().body(categoriaRepository.save(categoria)))
 				.orElse(ResponseEntity.notFound().build());
 
 	}

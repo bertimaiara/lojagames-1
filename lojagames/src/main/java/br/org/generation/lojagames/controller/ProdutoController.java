@@ -41,7 +41,7 @@ public class ProdutoController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Produto> getById(@PathVariable Long id){
 		return produtoRepository.findById(id)
-			.map(resp-> ResponseEntity.ok(resp))
+			.map(resposta -> ResponseEntity.ok(resposta))
 			.orElse(ResponseEntity.notFound().build());
 	}
 	
@@ -53,9 +53,7 @@ public class ProdutoController {
 	@PostMapping
 	public ResponseEntity<Produto> postProduto(@Valid @RequestBody Produto produto){
 		return categoriaRepository.findById(produto.getCategoria().getId())
-				.map(resposta -> {
-					return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
-				})
+				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto)))
 				.orElse(ResponseEntity.badRequest().build());
 	}
 	
@@ -65,9 +63,7 @@ public class ProdutoController {
 		if (produtoRepository.existsById(produto.getId())){
 
 			return categoriaRepository.findById(produto.getCategoria().getId())
-					.map(resposta -> {
-						return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produto));
-					})
+					.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produto)))
 					.orElse(ResponseEntity.badRequest().build());
 		}		
 		
