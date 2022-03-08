@@ -45,6 +45,7 @@ class Usuario {
   + autenticarUsuario(UsuarioLogin usuarioLogin)
   + cadastrarUsuario(Usuario usuario)
   + atualizarUsuario(Usuario usuario)
+  + delete(Long id)
 }
 class UsuarioLogin{
   - id : Long
@@ -52,6 +53,7 @@ class UsuarioLogin{
   - usuario : String
   - senha : String
   - foto : String
+  - dataNascimento : LocalDate
   - token : String
 }
 Categoria --> Produto
