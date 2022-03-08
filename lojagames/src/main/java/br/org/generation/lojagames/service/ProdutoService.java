@@ -14,6 +14,9 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
+   /**
+	 * Método Curtir -> Soma 1 ao atributo curtir
+	 */
     public Optional<Produto> curtir(Long id) {
 
 		if(produtoRepository.existsById(id)) {
