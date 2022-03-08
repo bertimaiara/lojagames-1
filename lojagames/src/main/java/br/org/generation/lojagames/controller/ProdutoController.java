@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.org.generation.lojagames.model.Produto;
 import br.org.generation.lojagames.repository.CategoriaRepository;
 import br.org.generation.lojagames.repository.ProdutoRepository;
+import br.org.generation.lojagames.service.ProdutoService;
 
 @RestController	
 @RequestMapping("/produtos")
@@ -33,6 +34,9 @@ public class ProdutoController {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
+	@Autowired
+	private ProdutoService produtoService;
+	
 	@GetMapping("/all")
 	public ResponseEntity<List<Produto>> getAll(){
 		return ResponseEntity.ok(produtoRepository.findAll());
@@ -53,9 +57,7 @@ public class ProdutoController {
 	@PostMapping
 	public ResponseEntity<Produto> postProduto(@Valid @RequestBody Produto produto){
 		return categoriaRepository.findById(produto.getCategoria().getId())
-				.map(resposta -> {
-					return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
-				})
+				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto)))
 				.orElse(ResponseEntity.badRequest().build());
 	}
 	
@@ -65,9 +67,7 @@ public class ProdutoController {
 		if (produtoRepository.existsById(produto.getId())){
 
 			return categoriaRepository.findById(produto.getCategoria().getId())
-					.map(resposta -> {
-						return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produto));
-					})
+					.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produto)))
 					.orElse(ResponseEntity.badRequest().build());
 		}		
 		
@@ -100,4 +100,13 @@ public class ProdutoController {
 		return ResponseEntity.ok(produtoRepository.findByPrecoLessThanOrderByPrecoDesc(preco));
 	}
 	
+	@PutMapping("/curtir/{id}")
+	public ResponseEntity<Produto> curtirProdutoId (@PathVariable Long id){
+		
+		return produtoService.curtir(id)
+			.map(resposta-> ResponseEntity.ok(resposta))
+			.orElse(ResponseEntity.badRequest().build());
+	
+	}
+
 }

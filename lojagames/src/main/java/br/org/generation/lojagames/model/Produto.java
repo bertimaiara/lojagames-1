@@ -47,6 +47,15 @@ public class Produto {
 	
 	private String foto;
 
+	/**
+	 * A anotação @Column além de renomear um atributo no Banco de dados,
+	 * também permite definir um valor padrão (default), através da propriedade
+	 * columnDefinition, onde deve ser informado o tipo do atributo (em nosso
+	 * exemplo integer) e o valor padrão (em nosso exemplo 0)
+	 */
+	@Column(columnDefinition = "integer default 0")
+	private int curtir;
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
@@ -114,6 +123,14 @@ public class Produto {
 
 	public void setDataLancamento(LocalDate dataLancamento) {
 		this.dataLancamento = dataLancamento;
+	}
+
+	public int getCurtir() {
+		return this.curtir;
+	}
+
+	public void setCurtir(int curtir) {
+		this.curtir = curtir;
 	}
 
 	public Categoria getCategoria() {
