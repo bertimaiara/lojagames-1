@@ -32,6 +32,28 @@ class Produto {
   + put(Produto produto)
   + delete(Long id)
 }
+class Usuario {
+  - id : Long
+  - nome : String
+  - usuario : String
+  - senha : String
+  - foto : String
+  - dataNascimento : LocalDate
+  - postagem : List ~Postagem~
+  + getAll()
+  + getById(Long id)
+  + autenticarUsuario(UsuarioLogin usuarioLogin)
+  + cadastrarUsuario(Usuario usuario)
+  + atualizarUsuario(Usuario usuario)
+}
+class UsuarioLogin{
+  - id : Long
+  - nome : String
+  - usuario : String
+  - senha : String
+  - foto : String
+  - token : String
+}
 Categoria --> Produto
 ```
 
