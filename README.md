@@ -7,8 +7,6 @@
 
 - [x] Adicione as Dependências  no arquivo pom.xml
 - [x] Crie a Classe Usuario na Camada Model
-- [x] Crie o Relacionamento da Classe Usuario com a Classe Postagem
-- [x] Crie o Relacionamento da Classe Postagem com a Classe Usuario
 - [x] Crie a Classe UsuarioLogin na Camada Model
 - [x] Crie a Classe UsuarioRepository na Camada Repository
 - [x] Crie a classe BasicSecurityConfig na Camada Security
