@@ -72,7 +72,7 @@ public class UsuarioController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deletePostagem(@PathVariable Long id) {
+	public ResponseEntity<?> deleteUsuario(@PathVariable Long id) {
 		
 		return usuarioRepository.findById(id)
 			.map(resposta -> {

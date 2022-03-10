@@ -45,6 +45,21 @@ public class Usuario {
 	@NotNull(message = "O atributo Data de Nascimento é Obrigatório!")
 	private LocalDate dataNascimento;
 
+	// Primeiro método Construtor
+
+	public Usuario(Long id, String nome, String usuario, String senha, String foto, LocalDate dataNascimento) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+		this.dataNascimento = dataNascimento;
+	}
+
+	// Segundo método Construtor
+
+	public Usuario() {	}
+
 	public Long getId() {
 		return id;
 	}
